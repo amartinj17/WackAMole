@@ -14,9 +14,9 @@ public class ControladorSprites extends MouseAdapter implements Runnable{
     //Lista de cuadrados
     private ArrayList<Sprite> lSprite ;
     //Objeto del panelJuego
-    private PanelDeJuego panelDeJuego;
+    private PantallaDeJuego panelDeJuego;
 
-    ControladorSprites(PanelDeJuego paneldeJuego){
+    ControladorSprites(PantallaDeJuego paneldeJuego){
         this.panelDeJuego = paneldeJuego;
         this.lSprite = paneldeJuego.lSprites;
         //Inicia el hilo que cambia el color de los Sprites

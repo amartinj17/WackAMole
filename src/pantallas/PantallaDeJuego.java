@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 import java.awt.*;
 
-public class PanelDeJuego implements Pantalla{
+public class PantallaDeJuego implements Pantalla{
 
     //CONSTANTES DE LOS SPRITES
         //Constantes que guarda el numero de sprites
@@ -37,7 +37,7 @@ public class PanelDeJuego implements Pantalla{
     //Guarda el panel actual
     private PanelJuego panelJuego;
 
-    public PanelDeJuego(PanelJuego panelJuego){
+    public PantallaDeJuego(PanelJuego panelJuego){
         this.panelJuego = panelJuego;
     }
 
@@ -100,8 +100,13 @@ public class PanelDeJuego implements Pantalla{
     @Override
     public void ejecutarFrame() {
         contadorTiempo = (System.currentTimeMillis() - tiempoInicial);
+
         if(contadorTiempo/1000 >= TIEMPO_PARTIDA){
             hayCronometro = false;
+        }
+
+        if(!hayCronometro){
+            panelJuego.cambiarPantalla(new PantallaDeFin(panelJuego));
         }
 
         
