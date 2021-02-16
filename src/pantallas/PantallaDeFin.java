@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Graphics;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -6,17 +5,17 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
-import org.graalvm.compiler.hotspot.stubs.NullPointerExceptionStub;
-
 import java.awt.Font;
+import java.awt.Color;
 
 public class PantallaDeFin implements Pantalla {
 
 
-    private PanelJuego panelJuego;
+     PanelJuego panelJuego;
 //CONSTANTES DE TEXTO
     private static final String TEXTO_FIN = "FIN DEL TIEMPO";
     private static final String TEXTO_PUNTUACION = "PUNTOS: ";
@@ -57,6 +56,8 @@ public class PantallaDeFin implements Pantalla {
         topRanking.add(puntosPartida);
         Collections.sort(topRanking, Integer::compareTo);
         reescribirRanking();
+
+        panelJuego.addMouseListener(new ControladorListeners(this));
     }
 
     @Override
@@ -119,7 +120,7 @@ public class PantallaDeFin implements Pantalla {
                     num = Integer.parseInt(linea);
                     ranking.add(num);
                 }catch(NumberFormatException e){
-                    
+                    //Si no es un número no lo añade, así se elimina de forma automática
                 }
             }
             br.close();
@@ -127,7 +128,7 @@ public class PantallaDeFin implements Pantalla {
             //Ordena el ArrayList del ranking
             Collections.sort(ranking,Integer::compareTo);
 
-            System.out.println(ranking.toString());
+            System.out.println(ranking.toString());                                         //BORRAR!!!!!!!!!!!!!!!!!!
 
         }catch(IOException io){
             System.out.println("Error en la lectura del fichero: "+io.getMessage());

@@ -13,7 +13,7 @@ public class PantallaDeJuego implements Pantalla{
         private static final int CUADRADOS_HEIGTH = 40;
     //CONSTANTE DEL CRONÓMETRO
         //Tiempo máximo de la partida en segundos
-        private static final int TIEMPO_PARTIDA = 2;               //poner a 120!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        private static final int TIEMPO_PARTIDA = 1;               //poner a 120!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //CONSTANTES DEL FONDO
         private static final Color COLOR_FONDO = Color.LIGHT_GRAY;
     //CONTROL DEL TIEMPO
@@ -35,7 +35,7 @@ public class PantallaDeJuego implements Pantalla{
         private Sprite cuadrado;
     
     //Guarda el panel actual
-    private PanelJuego panelJuego;
+         PanelJuego panelJuego;
 
     public PantallaDeJuego(PanelJuego panelJuego){
         this.panelJuego = panelJuego;
@@ -49,8 +49,8 @@ public class PantallaDeJuego implements Pantalla{
             lSprites.add(cuadrado); 
         }  
 
-        //Añade el listener en el panel de puego
-        panelJuego.addMouseListener(new ControladorSprites(this));
+        //Añade el listener en el panel de Juego
+        panelJuego.addMouseListener(new ControladorListeners(this));
 
         tiempoInicial = System.currentTimeMillis();
         hayCronometro = true;
