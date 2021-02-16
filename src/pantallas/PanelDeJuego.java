@@ -1,28 +1,9 @@
 
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import org.ietf.jgss.GSSException;
-import org.w3c.dom.css.RGBColor;
-import org.w3c.dom.css.Rect;
-
-
-import java.awt.image.BufferedImage;
-
 import java.awt.*;
 
 public class PanelDeJuego implements Pantalla{
 
-    private static final long serialVersionUID = 1L;
     //CONSTANTES DE LOS SPRITES
         //Constantes que guarda el numero de sprites
         private static final int CUADRADOS_NUMEROS = 4;
@@ -92,7 +73,7 @@ public class PanelDeJuego implements Pantalla{
             //Pinta los numeros del cronómetro  
             g.setColor(Color.BLACK);
             g.setFont(fuente);
-            g.drawString(String.format("%.2f",TIEMPO_PARTIDA - contadorTiempo/1000) , 7, 40);
+            g.drawString(String.format("%.2f",TIEMPO_PARTIDA - contadorTiempo/1000) , 10, 40);
         }
         g.setColor(Color.BLACK);
         g.fillRect(panelJuego.getWidth()-210, 0, 220, 60);
@@ -102,8 +83,6 @@ public class PanelDeJuego implements Pantalla{
         g.setColor(Color.BLACK);
         g.drawString("PUNTOS: "+puntos, panelJuego.getWidth()-200, 45);
         //Pinta el log de los aciertos o fallos
-        g.setColor(COLOR_FONDO); 
-        g.fillRect(panelJuego.getWidth()-200, 60,200,90);
         if(logPuntos != 0){
             if(logPuntos == 1){
                 g.setColor(new Color(0, 227, 40));
