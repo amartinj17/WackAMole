@@ -1,4 +1,4 @@
-package principal;
+
 
 import java.awt.Color;
 import java.awt.event.*;
