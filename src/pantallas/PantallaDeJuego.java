@@ -13,7 +13,7 @@ public class PantallaDeJuego implements Pantalla{
         private static final int CUADRADOS_HEIGTH = 40;
     //CONSTANTE DEL CRONÓMETRO
         //Tiempo máximo de la partida en segundos
-        private static final int TIEMPO_PARTIDA = 60;
+        private static final int TIEMPO_PARTIDA = 2;               //poner a 120!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //CONSTANTES DEL FONDO
         private static final Color COLOR_FONDO = Color.LIGHT_GRAY;
     //CONTROL DEL TIEMPO
@@ -26,7 +26,7 @@ public class PantallaDeJuego implements Pantalla{
         private boolean hayCronometro;
     //CONTROL DE LOS PUNTOS
         //controla el marcador de los puntos
-        public int puntos;
+        public static int puntos;
         //Log de los puntos
         public int logPuntos;
     

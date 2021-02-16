@@ -12,7 +12,7 @@ public class PanelJuego extends JPanel implements Runnable{
     /**
      * Constructor de PanelJuego 
      */
-    public PanelJuego() {
+    public PanelJuego() { 
 
         pantallaActual = new PantallaDeJuego(this);
         pantallaActual.inicializarPantalla();

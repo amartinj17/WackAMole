@@ -27,7 +27,6 @@ public class ControladorSprites extends MouseAdapter implements Runnable{
      */
     @Override
     public void mouseClicked(MouseEvent e){
-        System.out.println(e.getX()+" "+e.getY());
         for(int i=0 ; i<lSprite.size() ; i++){
             if(coliEjeX(lSprite.get(i), e.getX())){
                 if(coliEjeY(lSprite.get(i), e.getY())){
