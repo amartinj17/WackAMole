@@ -14,11 +14,11 @@ public class ControladorSprites extends MouseAdapter implements Runnable{
     //Lista de cuadrados
     private ArrayList<Sprite> lSprite ;
     //Objeto del panelJuego
-    private PanelJuego panelJuego;
+    private PanelDeJuego panelDeJuego;
 
-    ControladorSprites(PanelJuego panelJuego){
-        this.panelJuego = panelJuego;
-        this.lSprite = panelJuego.lSprites;
+    ControladorSprites(PanelDeJuego paneldeJuego){
+        this.panelDeJuego = paneldeJuego;
+        this.lSprite = paneldeJuego.lSprites;
         //Inicia el hilo que cambia el color de los Sprites
         new Thread(this).start();
     }
@@ -33,12 +33,12 @@ public class ControladorSprites extends MouseAdapter implements Runnable{
                 if(coliEjeY(lSprite.get(i), e.getY())){
                     if(lSprite.get(i).getColor() == Color.GREEN){
                         lSprite.get(i).quitarColorVerde();
-                        panelJuego.puntos = panelJuego.puntos + ACIERTO;
-                        panelJuego.logPuntos = 1;
+                        panelDeJuego.puntos = panelDeJuego.puntos + ACIERTO;
+                        panelDeJuego.logPuntos = 1;
                     }else{
                         if(lSprite.get(i).getColor() == Color.RED){
-                            panelJuego.puntos = panelJuego.puntos + FALLO; 
-                            panelJuego.logPuntos = -1; 
+                            panelDeJuego.puntos = panelDeJuego.puntos + FALLO; 
+                            panelDeJuego.logPuntos = -1; 
                         }
                     }
                 }
@@ -81,7 +81,7 @@ public class ControladorSprites extends MouseAdapter implements Runnable{
             for(Sprite cuadrado : lSprite){
                 cuadrado.cambiarColorAleatorio();
             }
-            panelJuego.logPuntos = 0;//Quita el valor de logPunto de la pantalla
+            panelDeJuego.logPuntos = 0;//Quita el valor de logPunto de la pantalla
         }
     }
 }
