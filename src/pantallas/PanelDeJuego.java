@@ -3,7 +3,7 @@
 public class PanelDeJuego implements Pantalla{
 
     @Override
-    public void inicializarPantella() {
+    public void inicializarPantella()  { 
         // TODO Auto-generated method stub
 
     }
