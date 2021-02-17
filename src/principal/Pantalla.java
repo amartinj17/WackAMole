@@ -1,5 +1,6 @@
 
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
 
 public interface Pantalla{
     
@@ -14,8 +15,12 @@ public interface Pantalla{
     public void pintarComponentes(Graphics g);
 
     /**
-     * 
+     * Ejecuta un frame
      */
     public void ejecutarFrame();
 
+    /**
+     * Al hace click
+     */
+    public void pulsarRaton(MouseEvent e);
 }
