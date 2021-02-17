@@ -20,6 +20,11 @@ public class Sprite{
     /**
      *
      */
+    //CONSTANTES DE LAS IMAGENES
+    private static final String RUTA_TOPODENTRO = "Imagenes/topo-dentro.png";
+    private static final String RUTA_TOPOFUERA = "Imagenes/topo-fuera.png";
+
+
     // CONSTANTES DE LOS COLORES
     private static final Color[] LISTA_COLORES = { Color.RED, Color.GREEN };
     // Color del sprite
@@ -33,12 +38,49 @@ public class Sprite{
     //Coordenadas ACTUALES del sprite
     private int posX;
     private int posY;
+    //Imagen del Sprite 
+    private String rutaImage;
+    //Guarda si el topo está fuera
+    private boolean estaFuera;
 
-    public Sprite(int ancho, int alto) { 
-        this.ancho = ancho; 
+
+
+    public Sprite(String rutaImage, int ancho, int alto) {
+        this.ancho = ancho;
         this.alto = alto;
+        this.rutaImage = rutaImage;
+
+        inicializarBuffer(rutaImage);
+    }
+
+
+    public boolean getEstaFuera() {
+        return this.estaFuera;
+    }
+
+    public void setEstaFuera(boolean estaFuera) {
+        this.estaFuera = estaFuera;
     }
     
+
+    public void inicializarBuffer(String ruta) {
+        BufferedImage imagenSprite = null;
+        
+        buffer = new BufferedImage(ancho, alto, BufferedImage.TYPE_INT_ARGB);
+        try{
+            imagenSprite = ImageIO.read(new File(ruta));
+            Graphics g = buffer.getGraphics();
+
+            g.drawImage(imagenSprite.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH), 0, 0, null);
+
+            g.dispose();     
+        }catch(IOException e){
+            e.printStackTrace(); 
+        }
+        
+
+    }
+
     public void setColor(Color color) { 
         this.color = color;
     }
@@ -82,23 +124,26 @@ public class Sprite{
     }
 
     /**
-     * Método que cambia de color entre rojo y verde de forma aleatoria
+     * Método que cambia la imagen del Sprite de forma aleatoria
      */
-    public void cambiarColorAleatorio() {
+    public void cambiarImagen() {
         Random random = new Random();
-        int intAleatorio = random.nextInt(4);
-        if (intAleatorio == 1) {
-            cambiarColor(LISTA_COLORES[1]);
+        int intAleatorio = random.nextInt(3);
+        if (intAleatorio == 0) {
+            inicializarBuffer(RUTA_TOPOFUERA);
+            estaFuera = true;
         } else {
-            cambiarColor(LISTA_COLORES[0]);
+            inicializarBuffer(RUTA_TOPODENTRO);
+            estaFuera = false;
         }
     }
 
     /**
      * Método que cambia el color a rojo, cuando este ha sido pulsado
      */
-    public void quitarColorVerde() {
-        cambiarColor(LISTA_COLORES[0]);  
+    public void quitarFuera() {
+        inicializarBuffer(RUTA_TOPODENTRO);
+        estaFuera = false;
     }
 
     /**

@@ -27,7 +27,7 @@ public class ControladorSprites implements Runnable{
                 e.printStackTrace();
             }
             for(Sprite cuadrado : lSprite){
-                cuadrado.cambiarColorAleatorio();
+                cuadrado.cambiarImagen();
             }
             panelDeJuego.logPuntos = 0;//Quita el valor de logPunto de la pantalla
         }

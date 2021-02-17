@@ -13,12 +13,12 @@ public class PantallaDeJuego implements Pantalla {
     // Constantes que guarda el numero de sprites
     private static final int CUADRADOS_NUMEROS = 4;
     // Alto
-    private static final int CUADRADOS_WIDTH = 40;
+    private static final int CUADRADOS_WIDTH = 50;
     // Ancho
-    private static final int CUADRADOS_HEIGTH = 40;
+    private static final int CUADRADOS_HEIGTH = 50;
     // CONSTANTE DEL CRONÓMETRO
     // Tiempo máximo de la partida en segundos
-    private static final int TIEMPO_PARTIDA = 5;                           //PONER A 90!!!!!!!!!!!!!!!!
+    private static final int TIEMPO_PARTIDA = 90;                           //PONER A 90!!!!!!!!!!!!!!!!
     // CONSTANTES DEL FONDO
     private static final Color COLOR_FONDO = Color.LIGHT_GRAY;
     // CONTROL DEL TIEMPO
@@ -48,7 +48,7 @@ public class PantallaDeJuego implements Pantalla {
     public void inicializarPantalla() {
         lSprite = new ArrayList<>();
         for (int i = 0; i < CUADRADOS_NUMEROS; i++) {
-            cuadrado = new Sprite(CUADRADOS_WIDTH, CUADRADOS_HEIGTH);
+            cuadrado = new Sprite("Imagenes/topo-dentro.png",CUADRADOS_WIDTH, CUADRADOS_HEIGTH);
             lSprite.add(cuadrado);
         }
 
@@ -113,12 +113,12 @@ public class PantallaDeJuego implements Pantalla {
         for(int i=0 ; i<lSprite.size() ; i++){
             if(coliEjeX(lSprite.get(i), e.getX())){
                 if(coliEjeY(lSprite.get(i), e.getY())){
-                    if(lSprite.get(i).getColor() == Color.GREEN){
-                        lSprite.get(i).quitarColorVerde();
+                    if(lSprite.get(i).getEstaFuera()){
+                        lSprite.get(i).quitarFuera();
                         PantallaDeJuego.puntos = PantallaDeJuego.puntos + ACIERTO;
                         logPuntos = 1;
                     }else{
-                        if(lSprite.get(i).getColor() == Color.RED){
+                        if(lSprite.get(i).getEstaFuera() == false){
                             puntos = puntos + FALLO; 
                             logPuntos = -1; 
                         }
