@@ -17,6 +17,8 @@ public class ControladorListeners extends MouseAdapter implements Runnable{
     private PantallaDeJuego panelDeJuego;
     //Objeto del pantallaDeFin
     private PantallaDeFin pantallaDeFin;
+    //Objeto del pantallaDeInicio
+    private PantallaDeInicio pantallaDeInicio;
 
     //Indica en qué pantalla está para no liar los listeners
     private int pantalla;
@@ -33,6 +35,11 @@ public class ControladorListeners extends MouseAdapter implements Runnable{
         this.pantallaDeFin = pantallaDeFin;
         pantalla = 2;
     }
+
+    ControladorListeners(PantallaDeInicio pantallaDeInicio){
+        this.pantallaDeInicio = pantallaDeInicio;
+        pantalla = 0;
+    }
     /**
      * Al hacer click, calcula si en las cordeenadas, hay un Sprite o no
      */
@@ -40,7 +47,8 @@ public class ControladorListeners extends MouseAdapter implements Runnable{
     public void mouseClicked(MouseEvent e){
         switch(pantalla){
             case 0:{
-
+                pantallaDeInicio.panelJuego.cambiarPantalla(new PantallaDeJuego(pantallaDeInicio.panelJuego));
+                System.out.println("pulsado");
                 break;
             }
             case 1:{
@@ -64,7 +72,6 @@ public class ControladorListeners extends MouseAdapter implements Runnable{
             }
             case 2:{
                 pantallaDeFin.panelJuego.cambiarPantalla(new PantallaDeJuego(pantallaDeFin.panelJuego));
-                System.out.println("pulsada");
                 break;
             }
         }

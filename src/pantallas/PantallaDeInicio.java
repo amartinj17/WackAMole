@@ -1,16 +1,28 @@
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class PantallaDeInicio implements Pantalla {
 
+    //Instancia del panelJuego
+    public PanelJuego panelJuego;
+//Constantes del texto
+    public static final String TEXTO_INICIO = "INICIO";
+    public static final String TEXTO_INFORMACION = "Haz click sobre los topos que estén fuera, ¡CUIDADO CON PULSAR SI NO HAN SALIDO!";
+
+    PantallaDeInicio(PanelJuego panelJuego){
+        this.panelJuego = panelJuego;
+    }
+
     @Override
     public void inicializarPantalla() {
-        // TODO Auto-generated method stub
+        panelJuego.addMouseListener(new ControladorListeners(this));
 
     }
 
     @Override
-    public void pintarComponentes(Graphics g) {
-        // TODO Auto-generated method stub
+    public void pintarComponentes(Graphics g) { 
+        g.setColor(Color.BLUE);
+        g.fillRect(0, 0, panelJuego.getWidth(), panelJuego.getHeight());
 
     }
 

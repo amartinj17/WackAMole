@@ -14,8 +14,8 @@ import java.awt.Color;
 
 public class PantallaDeFin implements Pantalla {
 
-
-     PanelJuego panelJuego;
+    //Guarda el panel de juego
+    public PanelJuego panelJuego;
 //CONSTANTES DE TEXTO
     private static final String TEXTO_FIN = "FIN DEL TIEMPO";
     private static final String TEXTO_PUNTUACION = "PUNTOS: ";

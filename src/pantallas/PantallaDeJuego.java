@@ -35,7 +35,7 @@ public class PantallaDeJuego implements Pantalla{
         private Sprite cuadrado;
     
     //Guarda el panel actual
-         PanelJuego panelJuego;
+        public PanelJuego panelJuego;
 
     public PantallaDeJuego(PanelJuego panelJuego){
         this.panelJuego = panelJuego;
