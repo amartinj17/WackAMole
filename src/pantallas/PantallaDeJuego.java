@@ -4,8 +4,12 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class PantallaDeJuego implements Pantalla {
-
-    // CONSTANTES DE LOS SPRITES
+//CONSTANTES DE LA PUNTIACIÓN
+    //Acierto 
+    private static final int ACIERTO = 1;
+    //Fallo
+    private static final int FALLO = -1;
+// CONSTANTES DE LOS SPRITES
     // Constantes que guarda el numero de sprites
     private static final int CUADRADOS_NUMEROS = 4;
     // Alto
@@ -14,7 +18,7 @@ public class PantallaDeJuego implements Pantalla {
     private static final int CUADRADOS_HEIGTH = 40;
     // CONSTANTE DEL CRONÓMETRO
     // Tiempo máximo de la partida en segundos
-    private static final int TIEMPO_PARTIDA = 3;                           //PONER A 90ª!!!!!!!!!!!!!!!!
+    private static final int TIEMPO_PARTIDA = 5;                           //PONER A 90!!!!!!!!!!!!!!!!
     // CONSTANTES DEL FONDO
     private static final Color COLOR_FONDO = Color.LIGHT_GRAY;
     // CONTROL DEL TIEMPO
@@ -30,7 +34,7 @@ public class PantallaDeJuego implements Pantalla {
     public int logPuntos;
 
     // Guarda la lista de los Sprite
-    public ArrayList<Sprite> lSprites;
+    public ArrayList<Sprite> lSprite;
     private Sprite cuadrado;
 
     // Guarda el panel actual
@@ -42,14 +46,14 @@ public class PantallaDeJuego implements Pantalla {
 
     @Override
     public void inicializarPantalla() {
-        lSprites = new ArrayList<>();
+        lSprite = new ArrayList<>();
         for (int i = 0; i < CUADRADOS_NUMEROS; i++) {
             cuadrado = new Sprite(CUADRADOS_WIDTH, CUADRADOS_HEIGTH);
-            lSprites.add(cuadrado);
+            lSprite.add(cuadrado);
         }
 
-        // Añade el listener en el panel de Juego
-        panelJuego.addMouseListener(new ControladorSprites(this));
+        // Lanza el hilo de control de los Sprites 
+        new ControladorSprites(this);
 
         tiempoInicial = System.currentTimeMillis();
         fuente = new Font("Arial", Font.BOLD, 30);
@@ -106,17 +110,32 @@ public class PantallaDeJuego implements Pantalla {
 
     @Override
     public void pulsarRaton(MouseEvent e) {
-        
+        for(int i=0 ; i<lSprite.size() ; i++){
+            if(coliEjeX(lSprite.get(i), e.getX())){
+                if(coliEjeY(lSprite.get(i), e.getY())){
+                    if(lSprite.get(i).getColor() == Color.GREEN){
+                        lSprite.get(i).quitarColorVerde();
+                        PantallaDeJuego.puntos = PantallaDeJuego.puntos + ACIERTO;
+                        logPuntos = 1;
+                    }else{
+                        if(lSprite.get(i).getColor() == Color.RED){
+                            puntos = puntos + FALLO; 
+                            logPuntos = -1; 
+                        }
+                    }
+                }
+            }
+        }
     }
 
     /**
      * Coloca los cuadrados
      */
     public void colocarSprites(Graphics g) {
-        for (int i = 0; i < lSprites.size(); i++) {
-            lSprites.get(i).setPosX((int) ((panelJuego.getWidth() / CUADRADOS_NUMEROS) * (i + 0.5)));
-            lSprites.get(i).setPosY(panelJuego.getHeight() / 2);
-            lSprites.get(i).estampar(g, lSprites.get(i).getPosX(), lSprites.get(i).getPosY());
+        for (int i = 0; i < lSprite.size(); i++) {
+            lSprite.get(i).setPosX((int) ((panelJuego.getWidth() / CUADRADOS_NUMEROS) * (i + 0.5)));
+            lSprite.get(i).setPosY(panelJuego.getHeight() / 2);
+            lSprite.get(i).estampar(g, lSprite.get(i).getPosX(), lSprite.get(i).getPosY());
         }
     }
 
@@ -128,6 +147,39 @@ public class PantallaDeJuego implements Pantalla {
         g.fillRect(0, 0, panelJuego.getWidth(), panelJuego.getHeight());
     }
 
-    
+    /**
+     * 
+     * @param cuadrado  
+     * @param posRatonX
+     * @return true si la posicion X del ratón, está entre las coordenadas X de el Sprite, false si no se cumple.
+     */
+    public boolean coliEjeX(Sprite cuadrado , int posRatonX){
+        boolean colisionEjeX;
+
+        if(posRatonX < cuadrado.getPosX()){
+            colisionEjeX = (posRatonX >= cuadrado.getPosX());  
+        }else{
+            colisionEjeX = ((cuadrado.getPosX() + cuadrado.getAncho()) >= posRatonX);
+        }
+
+        return colisionEjeX;
+    }
+
+    /**
+     * 
+     * @param cuadrado  
+     * @param posRatonY
+     * @return true si la posicion Y del ratón, está entre las coordenadas Y de el Sprite, false si no se cumple.
+     */
+    public boolean coliEjeY(Sprite cuadrado , int posRatonY) {
+        boolean colisionEjeY;
+        if(posRatonY < cuadrado.getPosY()){
+            colisionEjeY = posRatonY >= cuadrado.getPosY();
+        }else{
+            colisionEjeY = cuadrado.getPosY() + cuadrado.getAncho() >= posRatonY; 
+        }
+        return colisionEjeY;
+    }
+
     
 }
