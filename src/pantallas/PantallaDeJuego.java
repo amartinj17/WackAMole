@@ -9,7 +9,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentEvent;
 
 public class PantallaDeJuego implements Pantalla {
 //CONSTANTES DE LA PUNTIACIÓN
@@ -21,12 +20,12 @@ public class PantallaDeJuego implements Pantalla {
     // Constantes que guarda el numero de sprites
     private static final int CUADRADOS_NUMEROS = 4;
     // Alto
-    private static final int CUADRADOS_WIDTH = 50;
+    private static final int CUADRADOS_WIDTH = 60;
     // Ancho
-    private static final int CUADRADOS_HEIGTH = 50;
+    private static final int CUADRADOS_HEIGTH = 60;
     // CONSTANTE DEL CRONÓMETRO
     // Tiempo máximo de la partida en segundos
-    private static final int TIEMPO_PARTIDA = 90;                           
+    private static final int TIEMPO_PARTIDA = 5;        /////////////////////////CAMBIAR A 60                   
     // CONSTANTES DEL FONDO
     private static final Color COLOR_FONDO = Color.LIGHT_GRAY;
     // CONTROL DEL TIEMPO
@@ -46,7 +45,7 @@ public class PantallaDeJuego implements Pantalla {
     // Guarda el panel actual
     public PanelJuego panelJuego;
 
-//PANEL DE FONDO
+//IMAGEN DE FONDO
     //Almacena la imagen redimensionada
     private Image fondoRedimensionado;
     //BufferedImage del fondo

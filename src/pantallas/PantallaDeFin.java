@@ -75,8 +75,7 @@ public class PantallaDeFin implements Pantalla {
         g.drawString(puntosPartida + "", panelJuego.getWidth() / 18, (panelJuego.getHeight() / 10) * 9);
 
         // Separador
-        g.drawLine(panelJuego.getWidth() / 2, panelJuego.getHeight() / 2, panelJuego.getWidth() / 2,
-                panelJuego.getHeight());
+        g.drawLine(panelJuego.getWidth() / 2, panelJuego.getHeight() / 2, panelJuego.getWidth() / 2,    panelJuego.getHeight());
 
         // Texto del ranking
         g.drawString(TEXTO_RANKING, (panelJuego.getWidth() / 5) * 3, (panelJuego.getHeight() / 10) * 7);
@@ -137,9 +136,6 @@ public class PantallaDeFin implements Pantalla {
                 }
             }
             br.close();
-
-            // Ordena el ArrayList del ranking
-            Collections.sort(ranking, Integer::compareTo);
 
         } catch (IOException io) {
             System.out.println("Error en la lectura del fichero: " + io.getMessage());
