@@ -1,7 +1,15 @@
 
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentEvent;
 
 public class PantallaDeJuego implements Pantalla {
 //CONSTANTES DE LA PUNTIACIÓN
@@ -18,7 +26,7 @@ public class PantallaDeJuego implements Pantalla {
     private static final int CUADRADOS_HEIGTH = 50;
     // CONSTANTE DEL CRONÓMETRO
     // Tiempo máximo de la partida en segundos
-    private static final int TIEMPO_PARTIDA = 90;                           //PONER A 90!!!!!!!!!!!!!!!!
+    private static final int TIEMPO_PARTIDA = 90;                           
     // CONSTANTES DEL FONDO
     private static final Color COLOR_FONDO = Color.LIGHT_GRAY;
     // CONTROL DEL TIEMPO
@@ -32,13 +40,18 @@ public class PantallaDeJuego implements Pantalla {
     public static int puntos;
     // Log de los puntos
     public int logPuntos;
-
     // Guarda la lista de los Sprite
     public ArrayList<Sprite> lSprite;
     private Sprite cuadrado;
-
     // Guarda el panel actual
     public PanelJuego panelJuego;
+
+//PANEL DE FONDO
+    //Almacena la imagen redimensionada
+    private Image fondoRedimensionado;
+    //BufferedImage del fondo
+    private BufferedImage fondo;
+    
 
     public PantallaDeJuego(PanelJuego panelJuego) {
         this.panelJuego = panelJuego;
@@ -59,6 +72,13 @@ public class PantallaDeJuego implements Pantalla {
         fuente = new Font("Arial", Font.BOLD, 30);
         // Inicializa el log
         logPuntos = 0;
+
+        fondo = null;
+        try{
+            fondo = ImageIO.read(new File("Imagenes/fondo.png"));
+        }catch(IOException p){
+            p.printStackTrace();
+        }
     }
 
     @Override
@@ -95,11 +115,12 @@ public class PantallaDeJuego implements Pantalla {
                 }
             }
         }
-
+        
     }
 
     @Override
     public void ejecutarFrame() {
+        redimensionarFondo();
         contadorTiempo = (System.currentTimeMillis() - tiempoInicial);
 
         if (contadorTiempo / 1000 >= TIEMPO_PARTIDA) {
@@ -128,6 +149,26 @@ public class PantallaDeJuego implements Pantalla {
         }
     }
 
+    @Override
+    public void redimensionarPantalla(ComponentEvent e) {
+        redimensionarFondo();
+    }
+
+    /**
+     * Método para rellenar el fondo de la pantalla de inicio
+     * @param g
+     */
+    private void rellenarFondo(Graphics g){
+        g.drawImage(fondoRedimensionado , 0, 0, null);
+    }
+
+    /**
+     * Redimensiona el fondo 
+     */
+    private void redimensionarFondo() {
+        fondoRedimensionado = fondo.getScaledInstance(panelJuego.getWidth(),panelJuego.getHeight(), Image.SCALE_SMOOTH);
+    }
+
     /**
      * Coloca los cuadrados
      */
@@ -137,14 +178,6 @@ public class PantallaDeJuego implements Pantalla {
             lSprite.get(i).setPosY(panelJuego.getHeight() / 2);
             lSprite.get(i).estampar(g, lSprite.get(i).getPosX(), lSprite.get(i).getPosY());
         }
-    }
-
-    /**
-     * repinta el fondo
-     */
-    private void rellenarFondo(Graphics g) {
-        g.setColor(COLOR_FONDO);
-        g.fillRect(0, 0, panelJuego.getWidth(), panelJuego.getHeight());
     }
 
     /**

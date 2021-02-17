@@ -1,6 +1,7 @@
 
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
+import java.awt.event.ComponentEvent;
 
 public interface Pantalla{
     
@@ -23,4 +24,9 @@ public interface Pantalla{
      * Al hace click
      */
     public void pulsarRaton(MouseEvent e);
+
+    /**
+     * Acción al redimensionar la pantalla
+     */
+    public void redimensionarPantalla(ComponentEvent e);
 }

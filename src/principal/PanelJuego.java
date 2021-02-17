@@ -3,8 +3,10 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
-public class PanelJuego extends JPanel implements Runnable, MouseListener{
+public class PanelJuego extends JPanel implements Runnable, MouseListener, ComponentListener {
 
     private static final long serialVersionUID = 1L;
 
@@ -38,7 +40,7 @@ public class PanelJuego extends JPanel implements Runnable, MouseListener{
     @Override
     public void run() {
 
-        while (true) {// Sin sleep para que coja tods
+        while (true) {// Sin sleep para que refresque rápido
             pantallaActual.ejecutarFrame();
 
             repaint();
@@ -57,34 +59,35 @@ public class PanelJuego extends JPanel implements Runnable, MouseListener{
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
+    public void mouseClicked(MouseEvent e) {}
 
     @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
+    public void mousePressed(MouseEvent e) {}
 
     @Override
     public void mouseReleased(MouseEvent e) {
         pantallaActual.pulsarRaton(e);
-
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
+    public void mouseEntered(MouseEvent e) {}
 
+    @Override
+    public void mouseExited(MouseEvent e) {}
+
+    @Override
+    public void componentResized(ComponentEvent e) {
+        pantallaActual.redimensionarPantalla(e);
     }
 
     @Override
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
+    public void componentMoved(ComponentEvent e) {}
 
-    }
+    @Override
+    public void componentShown(ComponentEvent e) {}
+
+    @Override
+    public void componentHidden(ComponentEvent e) {}
     
 
     
