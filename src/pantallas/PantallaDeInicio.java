@@ -28,7 +28,7 @@ public class PantallaDeInicio implements Pantalla {
     public static final String TEXTO_AUTOR = "ALBERTO MARTÍN JIMÉNEZ";
     public static final String TEXTO_INFORMACION = "Haz click sobre los topos";
     public static final String TEXTO_INFORMACION_2 = "¡CUIDADO SI NO HAN SALIDO!";
-    // fuentes
+    // fuentes  
     private Font funeteIni;
     private Font funeteInformacion;
     private Font funeteAutor;

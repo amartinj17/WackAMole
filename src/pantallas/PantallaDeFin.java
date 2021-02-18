@@ -13,8 +13,30 @@ import java.util.Collections;
 
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ComponentEvent;
+import java.awt.event.MouseEvent;
+import java.awt.Font;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.awt.event.ComponentEvent;
 
 public class PantallaDeFin implements Pantalla {
+// IMAGEN DE FONDO
+    // Almacena la imagen redimensionada
+    private Image fondoRedimensionado;
+    // BufferedImage del fondo
+    private BufferedImage fondo;
+
+    //Booleano que controla si sen han dado dos clicks para pasar al juego otra vez
+    private boolean cambioseguro;
 
     // Guarda el panel de juego
     public PanelJuego panelJuego;
@@ -57,6 +79,13 @@ public class PantallaDeFin implements Pantalla {
         topRanking.add(puntosPartida);
         Collections.sort(topRanking, Integer::compareTo);
         reescribirRanking();
+
+        fondo = null;
+        try {
+            fondo = ImageIO.read(new File("Imagenes/fondoFIN.jpg"));
+        } catch (IOException p) {
+            p.printStackTrace();
+        }
 
     }
 
@@ -108,12 +137,16 @@ public class PantallaDeFin implements Pantalla {
 
     @Override
     public void ejecutarFrame() {
+        redimensionarFondo();
     }
 
     @Override
     public void pulsarRaton(MouseEvent e) {
-        panelJuego.cambiarPantalla(new PantallaDeJuego(panelJuego));
-
+        if(cambioseguro){
+            panelJuego.cambiarPantalla(new PantallaDeJuego(panelJuego));
+        }
+        
+        cambioseguro = true;
     }
 
     /**
@@ -167,15 +200,20 @@ public class PantallaDeFin implements Pantalla {
      * repinta el fondo
      */
     private void rellenarFondo(Graphics g) {
-        g.setColor(Color.WHITE);
-        g.fillRect(0, 0, panelJuego.getWidth(), panelJuego.getHeight());
+        g.drawImage(fondoRedimensionado, 0, 0, null);
     }
 
     @Override
     public void redimensionarPantalla(ComponentEvent e) {
-        // TODO Auto-generated method stub
+        redimensionarFondo();
 
     }
 
+    /**
+     * Redimensiona el fondo
+     */
+    private void redimensionarFondo() {
+        fondoRedimensionado = fondo.getScaledInstance(panelJuego.getWidth(),panelJuego.getHeight(), Image.SCALE_SMOOTH);
+    }
     
 }
