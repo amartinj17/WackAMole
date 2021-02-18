@@ -25,7 +25,7 @@ public class PantallaDeJuego implements Pantalla {
     private static final int CUADRADOS_HEIGTH = 60;
     // CONSTANTE DEL CRONÓMETRO
     // Tiempo máximo de la partida en segundos
-    private static final int TIEMPO_PARTIDA = 5;     //////////////////////////////////////////////////////////////
+    private static final int TIEMPO_PARTIDA = 90;    
     // CONSTANTES DEL FONDO
     private static final Color COLOR_FONDO = Color.LIGHT_GRAY;
     // CONTROL DEL TIEMPO

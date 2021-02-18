@@ -65,7 +65,6 @@ public class PantallaDeInicio implements Pantalla {
         g.drawString(TEXTO_INFORMACION, 25, panelJuego.getHeight() - 20);
         g.drawString(TEXTO_INFORMACION_2, 5, panelJuego.getHeight() - 5);
         // Texto abajo derecha
-        g.setColor(Color.GRAY);
         g.setFont(funeteAutor);
         g.drawString(TEXTO_AUTOR, panelJuego.getWidth() - 270, panelJuego.getHeight() - 5);
 
