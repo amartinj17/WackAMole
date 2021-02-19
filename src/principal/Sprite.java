@@ -1,4 +1,4 @@
-
+package principal;
 
 import java.awt.event.*;
 
@@ -24,9 +24,6 @@ public class Sprite{
     private static final String RUTA_TOPODENTRO = "Imagenes/topo-dentro.png";
     private static final String RUTA_TOPOFUERA = "Imagenes/topo-fuera.png";
 
-
-    // CONSTANTES DE LOS COLORES
-    private static final Color[] LISTA_COLORES = { Color.RED, Color.GREEN };
     // Color del sprite
     private Color color;
 

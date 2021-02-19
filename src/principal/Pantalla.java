@@ -1,4 +1,4 @@
-
+package principal;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.ComponentEvent;

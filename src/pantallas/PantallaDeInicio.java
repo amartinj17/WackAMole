@@ -1,17 +1,20 @@
+package pantallas;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import principal.PanelJuego;
+import principal.Pantalla;
+
 import java.awt.*;
 import java.io.File;
-import java.io.IOException;
-import java.awt.event.ComponentEvent;
+import java.io.IOException; 
 
 public class PantallaDeInicio implements Pantalla {
 
@@ -33,7 +36,7 @@ public class PantallaDeInicio implements Pantalla {
     private Font funeteInformacion;
     private Font funeteAutor;
 
-    PantallaDeInicio(PanelJuego panelJuego) {
+    public PantallaDeInicio(PanelJuego panelJuego) {
         this.panelJuego = panelJuego;
     }
 

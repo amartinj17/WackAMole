@@ -1,7 +1,13 @@
+package pantallas;
 
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+
+import principal.ControladorSprites;
+import principal.PanelJuego;
+import principal.Pantalla;
+import principal.Sprite;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;

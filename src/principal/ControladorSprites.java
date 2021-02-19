@@ -1,7 +1,9 @@
-
+package principal;
 
 import java.awt.Color;
 import java.util.ArrayList;
+
+import pantallas.PantallaDeJuego;
 
 public class ControladorSprites implements Runnable{
 
@@ -11,7 +13,7 @@ public class ControladorSprites implements Runnable{
     private PantallaDeJuego panelDeJuego;
     //Objeto del pantallaDeFin
 
-    ControladorSprites(PantallaDeJuego paneldeJuego){
+    public ControladorSprites(PantallaDeJuego paneldeJuego){
         this.panelDeJuego = paneldeJuego;
         this.lSprite = paneldeJuego.lSprite;
         //Inicia el hilo que cambia el color de los Sprites
