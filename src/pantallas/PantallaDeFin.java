@@ -78,7 +78,7 @@ public class PantallaDeFin implements Pantalla {
 
         fondo = null;
         try {
-            fondo = ImageIO.read(new File("Imagenes/fondoFIN.jpg"));
+            fondo = ImageIO.read(new File("src/Imagenes/fondoFIN.jpg"));
         } catch (IOException p) {
             p.printStackTrace();
         }

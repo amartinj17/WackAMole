@@ -66,7 +66,7 @@ public class PantallaDeJuego implements Pantalla {
     public void inicializarPantalla() {
         lSprite = new ArrayList<>();
         for (int i = 0; i < CUADRADOS_NUMEROS; i++) {
-            cuadrado = new Sprite("Imagenes/topo-dentro.png",CUADRADOS_WIDTH, CUADRADOS_HEIGTH);
+            cuadrado = new Sprite("src/Imagenes/topo-dentro.png",CUADRADOS_WIDTH, CUADRADOS_HEIGTH);
             lSprite.add(cuadrado);
         }
 
@@ -80,7 +80,7 @@ public class PantallaDeJuego implements Pantalla {
 
         fondo = null;
         try{
-            fondo = ImageIO.read(new File("Imagenes/fondo.png"));
+            fondo = ImageIO.read(new File("src/Imagenes/fondo.png"));
         }catch(IOException p){
             p.printStackTrace();
         }

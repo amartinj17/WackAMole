@@ -48,7 +48,7 @@ public class PantallaDeInicio implements Pantalla {
 
         fondo = null;
         try {
-            fondo = ImageIO.read(new File("Imagenes/fondo2.jpg"));
+            fondo = ImageIO.read(new File("src/Imagenes/fondo2.jpg"));
         } catch (IOException p) {
             p.printStackTrace();
         }

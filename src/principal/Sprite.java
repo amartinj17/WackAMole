@@ -21,8 +21,8 @@ public class Sprite{
      *
      */
     //CONSTANTES DE LAS IMAGENES
-    private static final String RUTA_TOPODENTRO = "Imagenes/topo-dentro.png";
-    private static final String RUTA_TOPOFUERA = "Imagenes/topo-fuera.png";
+    private static final String RUTA_TOPODENTRO = "src/Imagenes/topo-dentro.png";
+    private static final String RUTA_TOPOFUERA = "src/Imagenes/topo-fuera.png";
 
     // Color del sprite
     private Color color;
